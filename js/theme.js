@@ -43,24 +43,52 @@ var theme = {
    * Requires assets/js/vendor/headhesive.min.js
   */
   stickyHeader: () => {
-    var navbar = document.querySelector(".navbar");
-    if (navbar == null) return;
-    var options = {
-      offset: 350,
-      offsetSide: 'top',
-      classes: {
-        clone: 'navbar-clone fixed',
-        stick: 'navbar-stick',
-        unstick: 'navbar-unstick',
-      },
-      onStick: function() {
-        var navbarClonedClass = this.clonedElem.classList;
-        if (navbarClonedClass.contains('transparent') && navbarClonedClass.contains('navbar-dark')) {
-          this.clonedElem.className = this.clonedElem.className.replace("navbar-dark","navbar-light");
+    // var navbar = document.querySelector("#sticky-navbar");
+    // if (navbar == null) return;
+    // var options = {
+    //   offset: 350,
+    //   offsetSide: 'top',
+    //   classes: {
+    //     clone: 'navbar-clone fixed',
+    //     stick: 'navbar-stick',
+    //     unstick: 'navbar-unstick',
+    //   },
+    //   onStick: function() {
+    //     var navbarClonedClass = this.clonedElem.classList;
+    //     if (navbarClonedClass.contains('transparent') && navbarClonedClass.contains('navbar-dark')) {
+    //       this.clonedElem.className = this.clonedElem.className.replace("navbar-dark","navbar-light");
+    //     }
+    //   }
+    // };
+    // var banner = new Headhesive('#sticky-navbar', options);
+    function throttle(fn, delay) {
+      var lastCallTime, timeoutId;
+      return function() {
+        var now = Date.now();
+        if (!lastCallTime || now - lastCallTime >= delay) {
+          fn.apply(this, arguments);
+          lastCallTime = now;
+        } else {
+          clearTimeout(timeoutId);
+          timeoutId = setTimeout(function() {
+            fn.apply(this, arguments);
+            lastCallTime = Date.now();
+          }, delay - (now - lastCallTime));
         }
       }
-    };
-    var banner = new Headhesive('.navbar', options);
+    }
+
+    window.addEventListener('scroll', throttle(function() {
+      var scrollHeight = window.scrollY;
+      var stickyNav = document.getElementById('sticky-navbar');
+      if (stickyNav == null) return;
+      if (scrollHeight >= 180) {
+        stickyNav.classList.add('navbar-stick');
+      } else {
+        stickyNav.classList.remove('navbar-stick');
+      }
+    }, 100));
+
   },
   /**
    * Sub Menus
@@ -598,38 +626,38 @@ var theme = {
   pageProgress: () => {
     var progressWrap = document.querySelector('.progress-wrap');
     var progressPath = document.querySelector('.progress-wrap path');
-    if( progressPath && progressWrap) {
-      var pathLength = progressPath.getTotalLength();
-      var offset = 50;
-      if(progressWrap != null) {
-        progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
-        progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
-        progressPath.style.strokeDashoffset = pathLength;
-        progressPath.getBoundingClientRect();
-        progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
-        window.addEventListener("scroll", function(event) {
-          var scroll = document.body.scrollTop || document.documentElement.scrollTop;
-          var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-          var progress = pathLength - (scroll * pathLength / height);
-          progressPath.style.strokeDashoffset = progress;
-          var scrollElementPos = document.body.scrollTop || document.documentElement.scrollTop;
-          if(scrollElementPos >= offset) {
-            progressWrap.classList.add("active-progress")
-          } else {
-            progressWrap.classList.remove("active-progress")
-          }
-        });
-        progressWrap.addEventListener('click', function(e) {
-          e.preventDefault();
-          window.scroll({
-            top: 0, 
-            left: 0,
-            behavior: 'smooth'
-          });
-        });
-      }
+    if (!progressPath || !progressWrap) {
+      return;
     }
-
+    var pathLength = progressPath.getTotalLength();
+    var offset = 50;
+    if(progressWrap != null) {
+      progressPath.style.transition = progressPath.style.WebkitTransition = 'none';
+      progressPath.style.strokeDasharray = pathLength + ' ' + pathLength;
+      progressPath.style.strokeDashoffset = pathLength;
+      progressPath.getBoundingClientRect();
+      progressPath.style.transition = progressPath.style.WebkitTransition = 'stroke-dashoffset 10ms linear';
+      window.addEventListener("scroll", function(event) {
+        var scroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = pathLength - (scroll * pathLength / height);
+        progressPath.style.strokeDashoffset = progress;
+        var scrollElementPos = document.body.scrollTop || document.documentElement.scrollTop;
+        if(scrollElementPos >= offset) {
+          progressWrap.classList.add("active-progress")
+        } else {
+          progressWrap.classList.remove("active-progress")
+        }
+      });
+      progressWrap.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scroll({
+          top: 0, 
+          left: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
   },
   /**
    * Counter Up
