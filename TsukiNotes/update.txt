@@ -1,3 +1,6 @@
 TsukiNotes Tips:<br>
-You Are Old Version User/n
-Please Update To ≥1.5.1's Version/n
+You are using an older version<br>
+Please update to version 1.5.1 or higher<br>
+Your current version does not support online logging<br>
+You can update on GitHub<br>
+Powered by ZZBUAOYE<br>
