@@ -1,2 +1,3 @@
-TsukiNotes Ver 1.5.0 
-[+]Sorry ， Old Version Can't Use Online Mod
+TsukiNotes Tips:<br>
+You Are Old Version User/n
+Please Update To ≥1.5.1's Version/n
