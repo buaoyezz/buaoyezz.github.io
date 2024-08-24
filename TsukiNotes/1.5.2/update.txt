@@ -1,0 +1,8 @@
+[修复]修复右下角信息更新不准确<br>
+[新增]鼠标指针位置<br>
+[新增]MarkDown文件预览功能<br>
+[新增]Debug+Markdown预览功能<br>
+[新增]Beta通道<br>
+[新增]运行图标<br>
+[修复]重写CheckUpdate函数<br>
+[新增]beta 新版检测
