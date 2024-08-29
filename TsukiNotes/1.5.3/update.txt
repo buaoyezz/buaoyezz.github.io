@@ -1,0 +1,10 @@
+[修复]字体因为不符合UTF-8规则导致的崩溃<br>
+[修复]logging因为字体文件造成的崩溃<br>
+[优化]updateStatusLabel<br>
+[修复]updateStatusLabel不更新<br>
+[修复]历史遗留->用户设置的字体不会读取<br>
+[修复]高亮有可能崩溃报错<br>
+[优化]Tab函数，增强可读性<br>
+[优化]Tab修改为4个空格方便读写<br>
+[优化]Kernel内pyd名称，方便阅读<br>
+[优化]初始化载入配置的方法
