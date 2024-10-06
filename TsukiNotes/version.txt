@@ -1,1 +1,7 @@
-1.5.4
+TsukiNotes -Update
+===============
+version:1.5.5
+update_link:https://zzbuaoye.us.kg/TsukiNotes/TsukiNotes_New.zip
+channel:Release
+data:2024/10/06
+===============
