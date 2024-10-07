@@ -1,7 +1,7 @@
 TsukiNotes -Update
 ===============
-version:1.5.5
-update_link:https://d.feijix.com/storage/files/2024/10/06/3/5018144063/17282261287481.gz?t=6702aa73&rlimit=20&us=HXu7KY7bjE&sign=2972e3c8a6f2864d6d7798d0f19349c5&download_name=TsukiNotes_New.zip
+version:1.5.6
+update_link:None
 channel:Release
-data:2024/10/06
+data:2024/10/07
 ===============
