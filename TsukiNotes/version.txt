@@ -1,7 +1,7 @@
 TsukiNotes -Update
 ===============
-version:1.5.8
+version:1.5.9
 update_link:None
 channel:Release
-data:2024/10/26
+data:2024/11/01
 ===============
