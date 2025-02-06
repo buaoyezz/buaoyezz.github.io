@@ -1,0 +1,74 @@
+ClutUI Nextgen Font License Statement 2025
+
+字体使用声明:
+Font License Statement
+
+本软件使用了以下字体:
+Software: ClutUI Nextgen Use Font List
+
+1. HarmonyOS Sans Regular
+2. HarmonyOS Sans Bold
+3. Mulish Regular 
+4. Mulish Bold
+
+华为鸿蒙字体(HarmonyOS Sans)使用说明:
+HarmonyOS Sans Font License Statement:
+
+- 字体版权所有: © 2021-2024 华为技术有限公司
+- Font Copyright: © 2021-2024 Huawei Technologies Co., Ltd.
+
+- 根据华为鸿蒙字体商用授权协议，本软件使用HarmonyOS Sans字体
+- The Software is licensed under the HarmonyOS Sans Font License Agreement.
+- 字体许可协议可观测贴: https://developer.huawei.com/consumer/cn/forum/topic/0204102167078205104
+- Font License Agreement: https://developer.huawei.com/consumer/cn/forum/topic/0204102167078205104 from Community
+- 使用字体: HarmonyOS Sans Regular
+- Used Font: HarmonyOS Sans Regular
+- 使用字体: HarmonyOS Sans Bold
+- Used Font: HarmonyOS Sans Bold
+- 提示:不可修改，不可二次分发，其他具体限制范围需要咨询相关部门
+- Tips: Not allowed to modify, not allowed to redistribute, other specific restrictions need to be consulted with relevant departments
+
+Mulish字体使用说明:
+Mulish Font License Statement:
+- 字体设计: Vernon Adams, Cyreal
+- Font Design: Vernon Adams, Cyreal
+- 根据SIL Open Font License 1.1协议使用
+- SIL Open Font License 1.1: https://scripts.sil.org/OFL
+- 字体许可协议: https://scripts.sil.org/OFL
+- Font Copyright: © 2019, Vernon Adams (vern@newtypography.co.uk) OFL Link
+- 使用字体: Mulish Regular
+- Used Font: Mulish Regular
+- 使用字体: Mulish Bold
+- Used Font: Mulish Bold
+- 提示:不可修改，不可二次分发，其他具体限制范围需要咨询相关部门
+- Tips: Not allowed to modify, not allowed to redistribute, other specific restrictions need to be consulted with relevant departments
+
+Google Material Design Icons使用说明:
+Google Material Design Icons License Statement:
+- 图标设计: Google Design Team
+- Icon Design: Google Design Team
+- 根据Apache License 2.0协议使用
+- Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0
+- 图标许可协议: https://www.apache.org/licenses/LICENSE-2.0
+- Icon Copyright: © 2014-2024 Google LLC
+- 使用图标: Material Design Icons
+- Used Icons: Material Design Icons
+- 提示:不可修改，不可二次分发，其他具体限制范围需要咨询相关部门
+- Tips: Not allowed to modify, not allowed to redistribute, other specific restrictions need to be consulted with relevant departments
+
+本软件使用上述字体和图标，请遵守相关协议和限制，不可修改，不可二次分发，其他具体限制范围需要咨询相关部门
+This software uses the aforementioned fonts and icons; please adhere to the relevant agreements and restrictions, do not modify, do not redistribute, and for other specific limitations, please consult the relevant department.
+
+如有任何字体使用相关问题，请联系:
+IF you have any questions about font usage, please contact:
+
+Email: zzbuaoye@gmail.com
+Email: zzbuaoye@qq.com
+Website: https://zzbuaoye.us.kg
+
+If you have any questions about the software, please contact me.
+If the font license has changed, I will update the license statement in time. But if I have not changed it and you notice any license changes, please contact me and I will update the license statement quickly.
+
+Thanks for your support! 
+LINK: https://zzbuaoye.us.kg
+Github: https://github.com/buaoyezz/ClutUI-Nextgen/
