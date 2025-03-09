@@ -296,7 +296,19 @@
             visibility: hidden;
         }
         
+        .dropdown-menu.show {
+            opacity: 1;
+            transform: translateY(0);
+            visibility: visible;
+        }
+        
         .dropdown:hover .dropdown-menu {
+            opacity: 0;
+            transform: translateY(10px);
+            visibility: hidden;
+        }
+        
+        .dropdown:hover .dropdown-menu.show {
             opacity: 1;
             transform: translateY(0);
             visibility: visible;
@@ -390,10 +402,24 @@
                 box-shadow: none;
                 padding: 0;
                 margin-left: 15px;
+                transition: none;
             }
             
             .dropdown-menu.show {
                 display: block;
+                opacity: 1;
+                transform: none;
+                visibility: visible;
+            }
+            
+            .dropdown:hover .dropdown-menu {
+                display: none;
+                visibility: hidden;
+            }
+            
+            .dropdown:hover .dropdown-menu.show {
+                display: block;
+                visibility: visible;
             }
         }
     </style>
@@ -804,18 +830,33 @@
             // 初始化动画
             initAnimations();
             
-            // 移动端下拉菜单优化
-            if (window.innerWidth < 992) {
-                document.querySelectorAll('.dropdown-toggle').forEach(dropdownToggle => {
-                    dropdownToggle.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const parent = this.parentElement;
-                        const dropdown = parent.querySelector('.dropdown-menu');
-                        dropdown.classList.toggle('show');
+            // 下拉菜单功能优化 - 修复在所有设备上的下拉菜单问题
+            document.querySelectorAll('.dropdown-toggle').forEach(dropdownToggle => {
+                dropdownToggle.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const parent = this.parentElement;
+                    const dropdown = parent.querySelector('.dropdown-menu');
+                    
+                    // 关闭其他所有打开的下拉菜单
+                    document.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
+                        if(openMenu !== dropdown) {
+                            openMenu.classList.remove('show');
+                        }
                     });
+                    
+                    dropdown.classList.toggle('show');
                 });
-            }
+            });
+            
+            // 点击下拉菜单外部时关闭菜单
+            document.addEventListener('click', function(e) {
+                if (!e.target.closest('.dropdown')) {
+                    document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
+                        menu.classList.remove('show');
+                    });
+                }
+            });
             
             // 平滑滚动效果
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
