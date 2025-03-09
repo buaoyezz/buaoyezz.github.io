@@ -302,13 +302,8 @@
             visibility: visible;
         }
         
+        /* 恢复PC端悬停时的下拉菜单效果 */
         .dropdown:hover .dropdown-menu {
-            opacity: 0;
-            transform: translateY(10px);
-            visibility: hidden;
-        }
-        
-        .dropdown:hover .dropdown-menu.show {
             opacity: 1;
             transform: translateY(0);
             visibility: visible;
@@ -412,13 +407,18 @@
                 visibility: visible;
             }
             
+            /* 在移动设备上，悬停不会显示下拉菜单，只能通过点击展开 */
             .dropdown:hover .dropdown-menu {
                 display: none;
+                opacity: 0;
+                transform: translateY(10px);
                 visibility: hidden;
             }
             
             .dropdown:hover .dropdown-menu.show {
                 display: block;
+                opacity: 1;
+                transform: translateY(0);
                 visibility: visible;
             }
         }
@@ -830,24 +830,57 @@
             // 初始化动画
             initAnimations();
             
-            // 下拉菜单功能优化 - 修复在所有设备上的下拉菜单问题
-            document.querySelectorAll('.dropdown-toggle').forEach(dropdownToggle => {
-                dropdownToggle.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const parent = this.parentElement;
-                    const dropdown = parent.querySelector('.dropdown-menu');
-                    
-                    // 关闭其他所有打开的下拉菜单
-                    document.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
-                        if(openMenu !== dropdown) {
-                            openMenu.classList.remove('show');
-                        }
-                    });
-                    
-                    dropdown.classList.toggle('show');
+            // 下拉菜单处理 - 针对所有设备的处理
+            let isMobile = window.innerWidth < 992;
+            
+            // 设置下拉菜单行为
+            function setupDropdownBehavior() {
+                // 清除旧的事件监听器
+                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+                    const newToggle = toggle.cloneNode(true);
+                    toggle.parentNode.replaceChild(newToggle, toggle);
                 });
-            });
+                
+                document.querySelectorAll('.dropdown-item').forEach(item => {
+                    const newItem = item.cloneNode(true);
+                    item.parentNode.replaceChild(newItem, item);
+                });
+                
+                // 根据设备类型设置不同的行为
+                if (isMobile) {
+                    // 移动设备上使用点击展开菜单的方式
+                    document.querySelectorAll('.dropdown-toggle').forEach(dropdownToggle => {
+                        dropdownToggle.addEventListener('click', function(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const parent = this.parentElement;
+                            const dropdown = parent.querySelector('.dropdown-menu');
+                            
+                            // 关闭其他所有打开的下拉菜单
+                            document.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
+                                if(openMenu !== dropdown) {
+                                    openMenu.classList.remove('show');
+                                }
+                            });
+                            
+                            dropdown.classList.toggle('show');
+                        });
+                    });
+                } else {
+                    // PC端使用Bootstrap的默认下拉菜单行为，配合CSS hover效果
+                    document.querySelectorAll('.dropdown-item').forEach(item => {
+                        item.addEventListener('click', function() {
+                            const dropdown = this.closest('.dropdown-menu');
+                            if (dropdown) {
+                                dropdown.classList.remove('show');
+                            }
+                        });
+                    });
+                }
+            }
+            
+            // 初始设置
+            setupDropdownBehavior();
             
             // 点击下拉菜单外部时关闭菜单
             document.addEventListener('click', function(e) {
@@ -855,6 +888,17 @@
                     document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
                         menu.classList.remove('show');
                     });
+                }
+            });
+            
+            // 监听窗口大小变化，重新设置下拉菜单行为
+            window.addEventListener('resize', function() {
+                const wasIsMobile = isMobile;
+                isMobile = window.innerWidth < 992;
+                
+                // 只有在设备类型改变时才重新设置
+                if (wasIsMobile !== isMobile) {
+                    setupDropdownBehavior();
                 }
             });
             
