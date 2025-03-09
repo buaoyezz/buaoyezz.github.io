@@ -11,6 +11,8 @@
     <link rel="stylesheet" href="css/orange.css">
     <link rel="preload" href="css/thicccboi.css" as="style">
     <link rel="preload" href="fonts/Unicons.woff2" as="font" type="font/woff2" crossorigin>
+    <!-- 确保Bootstrap JS加载 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <style>
         :root {
             --primary-color: #ff6b00;
@@ -50,6 +52,7 @@
             background: linear-gradient(135deg, var(--light-bg) 0%, #e9ecef 100%);
             position: relative;
             overflow: hidden;
+            margin-top: 80px;
         }
         
         .hero-section::before {
@@ -245,14 +248,36 @@
         }
         
         .navbar {
-            padding: 20px 0;
+            padding: 15px 0;
             transition: all var(--animation-speed) ease;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            width: 100%;
+            z-index: 1030;
         }
         
         .navbar.scrolled {
             background-color: white;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-            padding: 15px 0;
+            padding: 12px 0;
+        }
+        
+        .navbar .container {
+            position: relative;
+        }
+        
+        .navbar-brand {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .navbar-nav {
+            position: relative;
+            z-index: 2;
         }
         
         .nav-link {
@@ -289,24 +314,12 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             border-radius: 12px;
             padding: 15px 0;
-            opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            display: block;
-            visibility: hidden;
+            transition: transform 0.3s ease;
         }
         
         .dropdown-menu.show {
-            opacity: 1;
             transform: translateY(0);
-            visibility: visible;
-        }
-        
-        /* 恢复PC端悬停时的下拉菜单效果 */
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            transform: translateY(0);
-            visibility: visible;
         }
         
         .dropdown-item {
@@ -385,42 +398,126 @@
                 font-size: 2.5rem;
             }
             
-            .offcanvas-header {
-                background-color: var(--primary-color);
-            }
-            
             .dropdown-menu {
-                display: none;
-                opacity: 1;
-                transform: none;
-                visibility: visible;
-                box-shadow: none;
-                padding: 0;
                 margin-left: 15px;
-                transition: none;
+                padding: 8px 0;
+                box-shadow: none;
+                max-height: none;
+                overflow: visible;
+                position: static;
+                border: none;
+                background-color: rgba(0, 0, 0, 0.03);
+                border-radius: 4px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                display: none;
+                transition: all 0.3s ease;
+                opacity: 0;
+                transform: translateY(-10px);
             }
             
             .dropdown-menu.show {
                 display: block;
                 opacity: 1;
-                transform: none;
-                visibility: visible;
+                transform: translateY(0);
             }
             
-            /* 在移动设备上，悬停不会显示下拉菜单，只能通过点击展开 */
-            .dropdown:hover .dropdown-menu {
+            .navbar-nav .dropdown-toggle::after {
+                float: right;
+                margin-top: 10px;
+                transition: transform 0.3s ease;
+            }
+            
+            .navbar-nav .dropdown-toggle[aria-expanded="true"]::after {
+                transform: rotate(180deg);
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 10px 15px !important;
+            }
+            
+            .dropdown-item {
+                padding: 10px 15px;
+                white-space: normal;
+                word-wrap: break-word;
+            }
+            
+            .navbar-nav {
+                width: 100%;
+            }
+            
+            .navbar-nav .nav-item {
+                width: 100%;
+            }
+            
+            .offcanvas {
+                width: 80%;
+                max-width: 300px;
+            }
+            
+            .offcanvas-body {
+                padding-top: 10px;
+                overflow-y: auto;
+                max-height: calc(100vh - 60px);
+            }
+        }
+        
+        /* 额外的样式确保下拉菜单可以正常工作 */
+        @media (min-width: 992px) {
+            .navbar .dropdown-menu {
                 display: none;
                 opacity: 0;
-                transform: translateY(10px);
                 visibility: hidden;
+                transition: all 0.3s ease;
+                margin-top: 0;
+                border-radius: 8px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                border: none;
+                padding: 10px 0;
+                min-width: 200px;
+                position: absolute;
+                z-index: 1000;
+                max-height: calc(100vh - 100px);
+                overflow-y: auto;
+                top: 100%;
+                left: 0;
             }
             
-            .dropdown:hover .dropdown-menu.show {
+            .navbar .dropdown {
+                position: relative;
+            }
+            
+            .navbar .dropdown-menu.show {
                 display: block;
                 opacity: 1;
-                transform: translateY(0);
                 visibility: visible;
+                transform: translateY(0);
             }
+            
+            .navbar .dropdown:hover > .dropdown-menu {
+                display: block;
+                opacity: 1;
+                visibility: visible;
+                transform: translateY(0);
+            }
+            
+            .navbar .nav-item {
+                margin: 0 5px;
+            }
+            
+            .navbar .nav-link {
+                padding: 8px 15px !important;
+            }
+            
+            .navbar .dropdown-item {
+                white-space: normal;
+                word-wrap: break-word;
+                padding: 8px 20px;
+            }
+        }
+        
+        .navbar .dropdown > .dropdown-toggle:active {
+            pointer-events: none;
         }
     </style>
 </head>
@@ -752,6 +849,183 @@
                 document.querySelector('.hero-title').classList.add('animated');
             }, 300);
             
+            // 修复移动端下拉菜单问题
+            const fixMobileDropdowns = function() {
+                if (window.innerWidth < 992) {
+                    const dropdowns = document.querySelectorAll('.navbar .dropdown');
+                    dropdowns.forEach(dropdown => {
+                        const toggle = dropdown.querySelector('.dropdown-toggle');
+                        const menu = dropdown.querySelector('.dropdown-menu');
+                        
+                        if (toggle && menu) {
+                            toggle.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                
+                                // 关闭其他打开的下拉菜单
+                                dropdowns.forEach(otherDropdown => {
+                                    if (otherDropdown !== dropdown) {
+                                        const otherMenu = otherDropdown.querySelector('.dropdown-menu');
+                                        const otherToggle = otherDropdown.querySelector('.dropdown-toggle');
+                                        if (otherMenu && otherMenu.classList.contains('show')) {
+                                            otherMenu.classList.remove('show');
+                                            if (otherToggle) otherToggle.setAttribute('aria-expanded', 'false');
+                                        }
+                                    }
+                                });
+                                
+                                // 切换当前下拉菜单
+                                menu.classList.toggle('show');
+                                toggle.setAttribute('aria-expanded', menu.classList.contains('show'));
+                            });
+                        }
+                    });
+                }
+            };
+            
+            // 初始化导航栏下拉菜单
+            function initNavbarDropdowns() {
+                const dropdowns = document.querySelectorAll('.navbar .dropdown');
+                
+                // 定义文档点击处理函数
+                function documentClickHandler(e) {
+                    if (!e.target.closest('.navbar .dropdown')) {
+                        document.querySelectorAll('.navbar .dropdown-menu.show').forEach(menu => {
+                            menu.classList.remove('show');
+                        });
+                    }
+                }
+                
+                // 清除所有现有事件监听器
+                document.removeEventListener('click', documentClickHandler);
+                
+                if (window.innerWidth >= 992) {
+                    // PC端下拉菜单逻辑
+                    dropdowns.forEach(dropdown => {
+                        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+                        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                        
+                        // 清除现有事件监听器
+                        const oldShowDropdown = dropdown._showDropdown;
+                        const oldHideDropdown = dropdown._hideDropdown;
+                        const oldToggleDropdown = dropdown._toggleDropdown;
+                        
+                        if (oldShowDropdown) dropdown.removeEventListener('mouseenter', oldShowDropdown);
+                        if (oldHideDropdown) dropdown.removeEventListener('mouseleave', oldHideDropdown);
+                        if (oldToggleDropdown && dropdownToggle) {
+                            dropdownToggle.removeEventListener('click', oldToggleDropdown);
+                        }
+                        
+                        // 鼠标悬停显示下拉菜单
+                        function showDropdown() {
+                            // 先关闭所有其他打开的下拉菜单
+                            document.querySelectorAll('.navbar .dropdown-menu.show').forEach(menu => {
+                                if (menu !== dropdownMenu) {
+                                    menu.classList.remove('show');
+                                }
+                            });
+                            dropdownMenu.classList.add('show');
+                            
+                            // 检查下拉菜单是否超出视窗底部
+                            setTimeout(() => {
+                                const menuRect = dropdownMenu.getBoundingClientRect();
+                                const viewportHeight = window.innerHeight;
+                                
+                                if (menuRect.bottom > viewportHeight) {
+                                    const overflowAmount = menuRect.bottom - viewportHeight;
+                                    dropdownMenu.style.top = `calc(100% - ${overflowAmount + 10}px)`;
+                                } else {
+                                    dropdownMenu.style.top = '100%';
+                                }
+                            }, 0);
+                        }
+                        
+                        // 鼠标离开隐藏下拉菜单
+                        function hideDropdown() {
+                            dropdownMenu.classList.remove('show');
+                        }
+                        
+                        // 点击切换下拉菜单状态
+                        function toggleDropdown(e) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            
+                            if (dropdownMenu.classList.contains('show')) {
+                                dropdownMenu.classList.remove('show');
+                            } else {
+                                // 先关闭所有其他打开的下拉菜单
+                                document.querySelectorAll('.navbar .dropdown-menu.show').forEach(menu => {
+                                    if (menu !== dropdownMenu) {
+                                        menu.classList.remove('show');
+                                    }
+                                });
+                                dropdownMenu.classList.add('show');
+                            }
+                        }
+                        
+                        // 保存事件处理函数引用
+                        dropdown._showDropdown = showDropdown;
+                        dropdown._hideDropdown = hideDropdown;
+                        dropdown._toggleDropdown = toggleDropdown;
+                        
+                        // 添加事件监听器
+                        dropdown.addEventListener('mouseenter', showDropdown);
+                        dropdown.addEventListener('mouseleave', hideDropdown);
+                        if (dropdownToggle) {
+                            dropdownToggle.addEventListener('click', toggleDropdown);
+                        }
+                    });
+                    
+                    // 点击页面其他区域关闭下拉菜单
+                    document.addEventListener('click', documentClickHandler);
+                } else {
+                    // 移动端下拉菜单逻辑
+                    dropdowns.forEach(dropdown => {
+                        const dropdownToggle = dropdown.querySelector('.dropdown-toggle');
+                        const dropdownMenu = dropdown.querySelector('.dropdown-menu');
+                        
+                        // 清除之前的事件监听器
+                        if (dropdownToggle) {
+                            const oldToggleDropdown = dropdown._mobileToggleDropdown;
+                            if (oldToggleDropdown) {
+                                dropdownToggle.removeEventListener('click', oldToggleDropdown);
+                            }
+                            
+                            // 点击切换下拉菜单
+                            function toggleMobileDropdown(e) {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                
+                                // 切换当前下拉菜单
+                                dropdownMenu.classList.toggle('show');
+                                
+                                // 更新aria-expanded属性
+                                const expanded = dropdownMenu.classList.contains('show');
+                                this.setAttribute('aria-expanded', expanded);
+                            }
+                            
+                            // 保存事件处理函数引用
+                            dropdown._mobileToggleDropdown = toggleMobileDropdown;
+                            
+                            // 添加新的事件监听器
+                            dropdownToggle.addEventListener('click', toggleMobileDropdown);
+                        }
+                    });
+                }
+            }
+            
+            // 初始化导航栏
+            initNavbarDropdowns();
+            
+            // 修复移动端下拉菜单
+            fixMobileDropdowns();
+            
+            // 窗口大小改变时重新初始化导航栏
+            window.addEventListener('resize', function() {
+                initNavbarDropdowns();
+                fixMobileDropdowns();
+            });
+            
             // 检测元素是否在可视区域内
             function isElementInViewport(el) {
                 const rect = el.getBoundingClientRect();
@@ -829,78 +1103,6 @@
             
             // 初始化动画
             initAnimations();
-            
-            // 下拉菜单处理 - 针对所有设备的处理
-            let isMobile = window.innerWidth < 992;
-            
-            // 设置下拉菜单行为
-            function setupDropdownBehavior() {
-                // 清除旧的事件监听器
-                document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
-                    const newToggle = toggle.cloneNode(true);
-                    toggle.parentNode.replaceChild(newToggle, toggle);
-                });
-                
-                document.querySelectorAll('.dropdown-item').forEach(item => {
-                    const newItem = item.cloneNode(true);
-                    item.parentNode.replaceChild(newItem, item);
-                });
-                
-                // 根据设备类型设置不同的行为
-                if (isMobile) {
-                    // 移动设备上使用点击展开菜单的方式
-                    document.querySelectorAll('.dropdown-toggle').forEach(dropdownToggle => {
-                        dropdownToggle.addEventListener('click', function(e) {
-                            e.preventDefault();
-                            e.stopPropagation();
-                            const parent = this.parentElement;
-                            const dropdown = parent.querySelector('.dropdown-menu');
-                            
-                            // 关闭其他所有打开的下拉菜单
-                            document.querySelectorAll('.dropdown-menu.show').forEach(openMenu => {
-                                if(openMenu !== dropdown) {
-                                    openMenu.classList.remove('show');
-                                }
-                            });
-                            
-                            dropdown.classList.toggle('show');
-                        });
-                    });
-                } else {
-                    // PC端使用Bootstrap的默认下拉菜单行为，配合CSS hover效果
-                    document.querySelectorAll('.dropdown-item').forEach(item => {
-                        item.addEventListener('click', function() {
-                            const dropdown = this.closest('.dropdown-menu');
-                            if (dropdown) {
-                                dropdown.classList.remove('show');
-                            }
-                        });
-                    });
-                }
-            }
-            
-            // 初始设置
-            setupDropdownBehavior();
-            
-            // 点击下拉菜单外部时关闭菜单
-            document.addEventListener('click', function(e) {
-                if (!e.target.closest('.dropdown')) {
-                    document.querySelectorAll('.dropdown-menu.show').forEach(menu => {
-                        menu.classList.remove('show');
-                    });
-                }
-            });
-            
-            // 监听窗口大小变化，重新设置下拉菜单行为
-            window.addEventListener('resize', function() {
-                const wasIsMobile = isMobile;
-                isMobile = window.innerWidth < 992;
-                
-                // 只有在设备类型改变时才重新设置
-                if (wasIsMobile !== isMobile) {
-                    setupDropdownBehavior();
-                }
-            });
             
             // 平滑滚动效果
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
