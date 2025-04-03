@@ -1,6 +1,6 @@
-TsukiNotes Tips:<br>
-You are using an archived version<br>
-Although this version has been archived, you can still update to the latest version<br>
-Your current version does not support online update logs<br>
-You can get the latest version on GitHub<br>
-Powered by ZZBUAOYE<br>
+TsukiNotes 提示:<br>
+您正在使用的是存档版本<br>
+尽管这个版本已经存档，您仍然可以更新到最新版本<br>
+您当前的版本不支持在线更新日志<br>
+您可以在GitHub上获取最新版本<br>
+由 ZZBUAOYE 开发<br>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>樱花飘落效果演示</title>
+    <link rel="icon" href="img/sakura-icon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.1/css/all.min.css">
+    <link rel="stylesheet" href="css/sakura-theme.css">
+    <link rel="stylesheet" href="css/sakura-animation.css">
+    <style>
+        .demo-container {
+            max-width: 1200px;
+            margin: 80px auto 40px;
+            padding: 0 20px;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .demo-title {
+            font-size: 2.5rem;
+            color: var(--sakura-dark);
+            margin-bottom: 15px;
+        }
+        
+        .demo-description {
+            font-size: 1.1rem;
+            color: var(--sakura-text);
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .demo-content {
+            background-color: var(--sakura-card-bg);
+            border-radius: 15px;
+            box-shadow: var(--sakura-card-shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .demo-section {
+            margin-bottom: 30px;
+        }
+        
+        .demo-section h3 {
+            font-size: 1.5rem;
+            color: var(--sakura-dark);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--sakura-light-pink);
+            padding-bottom: 10px;
+        }
+        
+        .demo-section p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        .control-panel {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .control-group {
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .control-group input[type="range"] {
+            width: 100%;
+            margin-bottom: 5px;
+        }
+        
+        .value-display {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--sakura-text);
+        }
+        
+        .btn-group {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="nav-container">
+        <div class="nav-wrapper">
+            <a href="index.html" class="site-logo">
+                <img src="img/sakura-icon.svg" alt="ZZBuAoYe Logo">
+                <h1 class="site-title">ZZBuAoYe</h1>
+            </a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="index.html"><i class="fas fa-home"></i> 首页</a></li>
+                <li><a href="sakura-demo.html" class="active"><i class="fas fa-cherry-blossom"></i> 樱花演示</a></li>
+                <li><a href="about/index.html"><i class="fas fa-user"></i> 关于我</a></li>
+                <li><a href="https://github.com/buaoyezz" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+            </ul>
+            <button class="mobile-toggle" id="mobile-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1 class="demo-title">樱花飘落效果演示</h1>
+            <p class="demo-description">这是一个增强版的樱花飘落效果演示页面，使用SVG实现更真实的樱花形状，添加旋转和摇摆动画，并提供多种自定义选项。</p>
+        </div>
+        
+        <div class="demo-content">
+            <div class="demo-section">
+                <h3>效果控制面板</h3>
+                <p>使用下面的控制面板调整樱花飘落效果的各种参数，体验不同的视觉效果。</p>
+                
+                <div class="control-panel">
+                    <div class="control-group">
+                        <label for="flake-count">花瓣数量</label>
+                        <input type="range" id="flake-count" min="5" max="50" value="15">
+                        <div class="value-display">当前值: <span id="flake-count-value">15</span></div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="wind-direction">风向 (-10左, 10右)</label>
+                        <input type="range" id="wind-direction" min="-10" max="10" value="0">
+                        <div class="value-display">当前值: <span id="wind-direction-value">0</span></div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="wind-intensity">风力强度</label>
+                        <input type="range" id="wind-intensity" min="0" max="10" value="5">
+                        <div class="value-display">当前值: <span id="wind-intensity-value">5</span></div>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="sway-intensity">摇摆强度</label>
+                        <input type="range" id="sway-intensity" min="0" max="10" value="5">
+                        <div class="value-display">当前值: <span id="sway-intensity-value">5</span></div>
+                    </div>
+                </div>
+                
+                <div class="btn-group">
+                    <button id="toggle-sakura" class="btn">关闭樱花</button>
+                </div>
+            </div>
+            
+            <div class="demo-section">
+                <h3>关于樱花效果</h3>
+                <p>这个樱花飘落效果使用SVG实现更真实的樱花形状，不再是简单的div元素。每个樱花花瓣都有独特的形状和动画，使整体效果更加自然和美观。</p>
+                <p>主要特点：</p>
+                <ul>
+                    <li>使用SVG实现更真实的樱花形状</li>
+                    <li>添加旋转和摇摆动画使飘落更自然</li>
+                    <li>优化性能以减少资源占用</li>
+                    <li>添加响应式设计使其在不同设备上表现良好</li>
+                    <li>增加风向和强度控制等自定义选项</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">ZZBuAoYe</div>
+            <p class="footer-text">版权所有 © 2023-2025 保留所有权利</p>
+            <div class="footer-links">
+                <a href="index.html">首页</a>
+                <a href="about/index.html">关于我</a>
+                <a href="https://github.com/buaoyezz" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script src="js/sakura.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 获取控制元素
+            const flakeCountSlider = document.getElementById('flake-count');
+            const flakeCountValue = document.getElementById('flake-count-value');
+            const windDirectionSlider = document.getElementById('wind-direction');
+            const windDirectionValue = document.getElementById('wind-direction-value');
+            const windIntensitySlider = document.getElementById('wind-intensity');
+            const windIntensityValue = document.getElementById('wind-intensity-value');
+            const swayIntensitySlider = document.getElementById('sway-intensity');
+            const swayIntensityValue = document.getElementById('sway-intensity-value');
+            const toggleButton = document.getElementById('toggle-sakura');
+            
+            // 移动菜单切换
+            const mobileToggle = document.getElementById('mobile-toggle');
+            const navMenu = document.getElementById('nav-menu');
+            
+            if (mobileToggle && navMenu) {
+                mobileToggle.addEventListener('click', () => {
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // 更新显示值
+            flakeCountSlider.addEventListener('input', () => {
+                flakeCountValue.textContent = flakeCountSlider.value;
+            });
+            
+            windDirectionSlider.addEventListener('input', () => {
+                windDirectionValue.textContent = windDirectionSlider.value;
+            });
+            
+            windIntensitySlider.addEventListener('input', () => {
+                windIntensityValue.textContent = windIntensitySlider.value;
+            });
+            
+            swayIntensitySlider.addEventListener('input', () => {
+                swayIntensityValue.textContent = swayIntensitySlider.value;
+            });
+        });
+    </script>
+</body>
+</html>

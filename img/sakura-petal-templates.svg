@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="100" viewBox="0 0 300 100">
+  <!-- 樱花花瓣模板集合 -->
+  
+  <!-- 花瓣类型1：基本五瓣樱花 -->
+  <g transform="translate(50, 50)" id="petal-type-1">
+    <circle cx="0" cy="0" r="12" fill="#ffc0cb" />
+    <ellipse cx="0" cy="-25" rx="15" ry="12" fill="#ffc0cb" />
+    <ellipse cx="25" cy="0" rx="12" ry="15" fill="#ffc0cb" />
+    <ellipse cx="0" cy="25" rx="15" ry="12" fill="#ffc0cb" />
+    <ellipse cx="-25" cy="0" rx="12" ry="15" fill="#ffc0cb" />
+    <circle cx="0" cy="0" r="8" fill="#fff" opacity="0.5" />
+  </g>
+  
+  <!-- 花瓣类型2：更圆润的樱花 -->
+  <g transform="translate(150, 50)" id="petal-type-2">
+    <circle cx="0" cy="0" r="10" fill="#ffb7dd" />
+    <ellipse cx="17" cy="-17" rx="10" ry="8" transform="rotate(45 17 -17)" fill="#ffb7dd" />
+    <ellipse cx="17" cy="17" rx="10" ry="8" transform="rotate(135 17 17)" fill="#ffb7dd" />
+    <ellipse cx="-17" cy="17" rx="10" ry="8" transform="rotate(45 -17 17)" fill="#ffb7dd" />
+    <ellipse cx="-17" cy="-17" rx="10" ry="8" transform="rotate(135 -17 -17)" fill="#ffb7dd" />
+    <circle cx="0" cy="0" r="6" fill="#fff" opacity="0.5" />
+  </g>
+  
+  <!-- 花瓣类型3：简单单瓣 -->
+  <g transform="translate(250, 50)" id="petal-type-3">
+    <path d="M0,-30 C20,-20 20,20 0,30 C-20,20 -20,-20 0,-30 Z" fill="#ffd1dc" />
+    <circle cx="0" cy="0" r="5" fill="#fff" opacity="0.5" />
+  </g>
+</svg>
