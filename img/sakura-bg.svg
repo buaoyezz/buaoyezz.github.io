@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <!-- 背景渐变 -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd6e7" />
+      <stop offset="100%" stop-color="#ffeff5" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 背景 -->
+  <rect width="800" height="600" fill="url(#bg-gradient)" opacity="0.7" />
+  
+  <!-- 樱花树枝 -->
+  <path d="M 50,500 Q 200,400 300,450 T 500,400 T 700,450" stroke="#d4a5a5" stroke-width="3" fill="none" />
+  <path d="M 100,550 Q 250,450 350,500 T 550,450 T 750,500" stroke="#d4a5a5" stroke-width="2" fill="none" />
+  
+  <!-- 樱花花瓣 -->
+  <g fill="#ffc0cb" opacity="0.8">
+    <!-- 花瓣组1 -->
+    <circle cx="150" cy="420" r="10" />
+    <circle cx="160" cy="410" r="10" />
+    <circle cx="140" cy="410" r="10" />
+    <circle cx="150" cy="400" r="10" />
+    
+    <!-- 花瓣组2 -->
+    <circle cx="350" cy="380" r="8" />
+    <circle cx="358" cy="372" r="8" />
+    <circle cx="342" cy="372" r="8" />
+    <circle cx="350" cy="364" r="8" />
+    
+    <!-- 花瓣组3 -->
+    <circle cx="550" cy="400" r="12" />
+    <circle cx="562" cy="388" r="12" />
+    <circle cx="538" cy="388" r="12" />
+    <circle cx="550" cy="376" r="12" />
+    
+    <!-- 散落的花瓣 -->
+    <ellipse cx="200" cy="500" rx="10" ry="6" transform="rotate(30 200 500)" />
+    <ellipse cx="400" cy="520" rx="8" ry="5" transform="rotate(45 400 520)" />
+    <ellipse cx="600" cy="480" rx="12" ry="7" transform="rotate(15 600 480)" />
+    <ellipse cx="300" cy="550" rx="9" ry="5" transform="rotate(60 300 550)" />
+    <ellipse cx="500" cy="530" rx="10" ry="6" transform="rotate(75 500 530)" />
+    <ellipse cx="100" cy="480" rx="11" ry="6" transform="rotate(20 100 480)" />
+    <ellipse cx="700" cy="510" rx="9" ry="5" transform="rotate(40 700 510)" />
+  </g>
+  
+  <!-- 飘落的花瓣 -->
+  <g fill="#ffb7dd" opacity="0.6">
+    <ellipse cx="120" cy="100" rx="10" ry="6" transform="rotate(30 120 100)" />
+    <ellipse cx="320" cy="150" rx="8" ry="5" transform="rotate(45 320 150)" />
+    <ellipse cx="520" cy="80" rx="12" ry="7" transform="rotate(15 520 80)" />
+    <ellipse cx="220" cy="200" rx="9" ry="5" transform="rotate(60 220 200)" />
+    <ellipse cx="420" cy="120" rx="10" ry="6" transform="rotate(75 420 120)" />
+    <ellipse cx="620" cy="180" rx="11" ry="6" transform="rotate(20 620 180)" />
+    <ellipse cx="720" cy="100" rx="9" ry="5" transform="rotate(40 720 100)" />
+    <ellipse cx="180" cy="250" rx="7" ry="4" transform="rotate(25 180 250)" />
+    <ellipse cx="380" cy="50" rx="8" ry="5" transform="rotate(55 380 50)" />
+    <ellipse cx="580" cy="220" rx="10" ry="6" transform="rotate(35 580 220)" />
+    <ellipse cx="680" cy="150" rx="6" ry="4" transform="rotate(70 680 150)" />
+  </g>
+</svg>

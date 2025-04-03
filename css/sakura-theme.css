@@ -1,0 +1,514 @@
+/* Sakura Theme CSS - 樱花主题样式 */
+:root {
+    --sakura-pink: #ffa7c4;
+    --sakura-deep-pink: #ff7bac;
+    --sakura-light-pink: #ffd6e7;
+    --sakura-text: #6d6875;
+    --sakura-dark: #5d4954;
+    --sakura-light: #f8f9fa;
+    --sakura-accent: #fb6376;
+    --sakura-link: #8675a9;
+    --sakura-hover: #c3aed6;
+    --sakura-bg: #fff6f6;
+    --sakura-card-bg: #ffffff;
+    --sakura-card-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    --sakura-nav-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --sakura-transition: all 0.3s ease;
+}
+
+/* 基础样式 */
+body {
+    font-family: 'Noto Serif SC', 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--sakura-bg);
+    color: var(--sakura-text);
+    line-height: 1.8;
+}
+
+/* 导航栏样式 */
+.nav-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background-color: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--sakura-nav-shadow);
+    transition: var(--sakura-transition);
+}
+
+.nav-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    height: 60px;
+}
+
+.site-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.site-logo img {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.site-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--sakura-dark);
+    margin: 0;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin: 0 15px;
+}
+
+.nav-menu a {
+    color: var(--sakura-text);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    position: relative;
+    padding: 5px 0;
+    transition: var(--sakura-transition);
+}
+
+.nav-menu a:hover {
+    color: var(--sakura-accent);
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: var(--sakura-accent);
+    transition: var(--sakura-transition);
+}
+
+.nav-menu a:hover::after {
+    width: 100%;
+}
+
+.mobile-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--sakura-dark);
+    cursor: pointer;
+}
+
+/* 头部样式 */
+.hero-header {
+    position: relative;
+    height: 70vh;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    overflow: hidden;
+    margin-top: 60px;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://api.mashiro.top/cover/');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.7);
+    z-index: -1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* 主要内容区域 */
+.main-container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: var(--sakura-dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--sakura-accent);
+    border-radius: 3px;
+}
+
+/* 项目卡片样式 */
+.repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.repo-card {
+    background-color: var(--sakura-card-bg);
+    border-radius: 12px;
+    box-shadow: var(--sakura-card-shadow);
+    padding: 25px;
+    transition: var(--sakura-transition);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.repo-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--sakura-pink), var(--sakura-accent));
+    opacity: 0;
+    transition: var(--sakura-transition);
+}
+
+.repo-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+.repo-card:hover::before {
+    opacity: 1;
+}
+
+.repo-title {
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--sakura-dark);
+    font-weight: 600;
+}
+
+.repo-description {
+    color: var(--sakura-text);
+    font-size: 1rem;
+    margin-bottom: 20px;
+    flex-grow: 1;
+    line-height: 1.6;
+}
+
+.repo-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #888;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: white;
+    margin-right: 10px;
+    letter-spacing: 0.025em;
+}
+
+.badge-active {
+    background-color: var(--sakura-accent);
+    box-shadow: 0 2px 5px rgba(251, 99, 118, 0.3);
+}
+
+.badge-archived {
+    background-color: #a0a0a0;
+    box-shadow: 0 2px 5px rgba(160, 160, 160, 0.3);
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    background-color: var(--sakura-accent);
+    color: white;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--sakura-transition);
+    box-shadow: 0 4px 10px rgba(251, 99, 118, 0.3);
+    border: none;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: var(--sakura-deep-pink);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(251, 99, 118, 0.4);
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 40px;
+}
+
+/* 页脚样式 */
+.footer {
+    background: linear-gradient(135deg, var(--sakura-dark), #3a3240);
+    color: #fff;
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    margin-top: 80px;
+}
+
+.footer-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+}
+
+.footer-text {
+    margin-bottom: 30px;
+    opacity: 0.9;
+    font-size: 1rem;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: var(--sakura-transition);
+    position: relative;
+}
+
+.footer-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: -5px;
+    left: 0;
+    background-color: var(--sakura-light-pink);
+    transition: var(--sakura-transition);
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-links a:hover::after {
+    width: 100%;
+}
+
+.copyright {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    margin-top: 20px;
+}
+
+/* 樱花飘落动画 */
+.sakura-falling {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    0% {
+        opacity: 1;
+        top: -10%;
+        transform: translateX(0) rotate(0deg);
+    }
+    25% {
+        opacity: 0.8;
+        transform: translateX(10%) rotate(45deg);
+    }
+    50% {
+        opacity: 0.6;
+        transform: translateX(-10%) rotate(90deg);
+    }
+    75% {
+        opacity: 0.4;
+        transform: translateX(10%) rotate(135deg);
+    }
+    100% {
+        opacity: 0;
+        top: 110%;
+        transform: translateX(-10%) rotate(180deg);
+    }
+}
+
+.sakura {
+    position: absolute;
+    background: #ffc0cb;
+    border-radius: 12px 1px;
+    opacity: 0.9;
+    transform-origin: center;
+    animation: fall linear infinite;
+}
+
+/* 响应式设计 */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .repo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        background-color: white;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        transform: translateY(-100%);
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--sakura-transition);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+    
+    .nav-menu li {
+        margin: 10px 0;
+    }
+    
+    .mobile-toggle {
+        display: block;
+    }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .repo-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-header {
+        min-height: 400px;
+    }
+    
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+    }
+    
+    .repo-card {
+        padding: 20px;
+    }
+}
