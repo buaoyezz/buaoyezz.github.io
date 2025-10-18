@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "data": {
+    "latestVersion": "1.0.0",
+    "latestBuildNumber": 1,
+    "releaseDate": "2025-10-18",
+    "downloadUrl": "https://github.com/buaoyezz/MollyTodo/releases",
+    "changelog": [
+      "Molly To Do , Not Just To do"
+    ],
+    "updateRequired": false,
+    "updateMessage": "当前已是最新版本",
+    "minVersion": "1.0.0",
+    "forceUpdate": false
+  }
+}
