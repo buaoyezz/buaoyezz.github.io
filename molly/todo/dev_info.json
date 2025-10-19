@@ -1,12 +1,17 @@
 {
   "status": "success",
   "data": {
-    "latestVersion": "1.0.0",
-    "latestBuildNumber": 1,
-    "releaseDate": "2025-10-18",
+    "latestVersion": "1.1.0",
+    "latestBuildNumber": 2,
+    "releaseDate": "2025-10-19",
     "downloadUrl": "https://github.com/buaoyezz/MollyTodo/releases",
     "changelog": [
-      "Molly To Do , Not Just To do"
+      "优化软件体验，更加丝滑",
+      "新增了Todo的卡片模式",
+      "新增Todo模式下卡片的样式，联动主题功能",
+      "新增更多的动画，让软件体验更加流畅",
+      "优化普通卡片在linux下存在黑色边缘的问题",
+      "加入精简卡片"
     ],
     "updateRequired": false,
     "updateMessage": "当前已是最新版本",
