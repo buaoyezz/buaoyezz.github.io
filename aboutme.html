@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - ZZBuAoYe</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .about-hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 60px 40px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4a6ee0 0%, #3a5ecf 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: white;
+            flex-shrink: 0;
+            box-shadow: 0 8px 20px rgba(74, 110, 224, 0.3);
+        }
+        
+        .about-content {
+            flex: 1;
+        }
+        
+        .about-content h1 {
+            font-size: 2.5rem;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .about-content .role {
+            font-size: 1.3rem;
+            color: #4a6ee0;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .about-content p {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #f8f9ff;
+            border-radius: 10px;
+            border-left: 4px solid #4a6ee0;
+        }
+        
+        .info-item i {
+            font-size: 1.5rem;
+            color: #4a6ee0;
+        }
+        
+        .info-item .info-label {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 5px;
+        }
+        
+        .info-item .info-value {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #4a6ee0;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -46px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: #4a6ee0;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px #4a6ee0;
+        }
+        
+        .timeline-year {
+            font-size: 1.1rem;
+            color: #4a6ee0;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-title {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-desc {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .interest-card {
+            flex: 1;
+            min-width: 200px;
+            padding: 25px;
+            background: #f8f9ff;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+        
+        .interest-card:hover {
+            border-color: #4a6ee0;
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(74, 110, 224, 0.2);
+        }
+        
+        .interest-card i {
+            font-size: 2.5rem;
+            color: #4a6ee0;
+            margin-bottom: 15px;
+        }
+        
+        .interest-card h3 {
+            color: #2c3e50;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .interest-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        @media (max-width: 768px) {
+            .about-hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+            
+            .avatar {
+                width: 150px;
+                height: 150px;
+                font-size: 4rem;
+            }
+            
+            .about-content h1 {
+                font-size: 2rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <div class="logo-text">ZZBuAoYe</div>
+            </div>
+            <div class="language-switcher">
+                <select class="lang-select" id="lang-select">
+                    <option value="en">English</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+        </header>
+        
+        <section class="about-hero">
+            <div class="avatar">
+                <img src="https://avatars.githubusercontent.com/u/163652202?s=400&u=d7fe6efa5d0ba0abe5dce8da1739ac636be5ccd1&v=4" alt="ZZBuAoYe Avatar" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover;">
+            </div>
+            <div class="about-content">
+                <h1 id="name">ZZBuAoYe</h1>
+                <div class="role" id="role">Developer & Open Source Enthusiast</div>
+                <p id="intro">Hi there! I'm a passionate developer who loves creating elegant solutions and contributing to open source projects. I believe in the power of technology to make a positive impact on people's lives.</p>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title" id="info-title">Personal Information</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <div class="info-label" id="location-label">Location</div>
+                        <div class="info-value" id="location-value">China</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-code"></i>
+                    <div>
+                        <div class="info-label" id="specialty-label">Specialty</div>
+                        <div class="info-value" id="specialty-value">Full Stack Development</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <div>
+                        <div class="info-label" id="education-label">Education</div>
+                        <div class="info-value" id="education-value">Computer Science</div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <div class="info-label" id="contact-label">Contact</div>
+                        <div class="info-value">GitHub</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title" id="journey-title">My Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-title" id="journey1-title">Hanabi Download Manager X</div>
+                    <div class="timeline-desc" id="journey1-desc">Developed a powerful open-source download manager using Flutter and Python, featuring multi-threaded downloads and a beautiful user interface.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-title" id="journey2-title">Open Source Contributions</div>
+                    <div class="timeline-desc" id="journey2-desc">Started actively contributing to various open source projects and sharing knowledge with the developer community.</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-title" id="journey3-title">Learning Flutter</div>
+                    <div class="timeline-desc" id="journey3-desc">Began exploring Flutter framework and fell in love with its elegant approach to building cross-platform applications.</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title" id="interests-title">Interests & Hobbies</h2>
+            <div class="interests">
+                <div class="interest-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3 id="interest1-title">Coding</h3>
+                    <p id="interest1-desc">Building innovative solutions and exploring new technologies</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fas fa-book"></i>
+                    <h3 id="interest2-title">Learning</h3>
+                    <p id="interest2-desc">Constantly learning new programming languages and frameworks</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fas fa-users"></i>
+                    <h3 id="interest3-title">Community</h3>
+                    <p id="interest3-desc">Contributing to open source and helping fellow developers</p>
+                </div>
+                <div class="interest-card">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3 id="interest4-title">Innovation</h3>
+                    <p id="interest4-desc">Creating tools that solve real-world problems</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="content-section">
+            <h2 class="section-title" id="connect-title">Let's Connect</h2>
+            <p style="text-align: center; color: #666; font-size: 1.1rem; margin-bottom: 30px;" id="connect-desc">
+                I'm always interested in connecting with fellow developers and working on exciting projects together.
+            </p>
+            <div class="hero-buttons">
+                <a href="https://github.com/buaoyezz" class="btn btn-primary" id="github-btn">
+                    <i class="fab fa-github"></i> Visit My GitHub
+                </a>
+                <a href="index.html" class="btn btn-secondary" id="home-btn">
+                    <i class="fas fa-home"></i> Back to Home
+                </a>
+            </div>
+        </section>
+        
+        <footer>
+            <p id="footer-text">© 2023 ZZBuAoYe. All rights reserved.</p>
+            <div class="social-links">
+                <a href="https://github.com/buaoyezz"><i class="fab fa-github"></i></a>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Language data
+        const languageData = {
+en: {
+                name: "ZZBuAoYe",
+                role: "Developer & Open Source Enthusiast",
+                intro: "Hey, welcome to my homepage! Here you can see some information about me. Feel free to use my projects. I'm just a bored open source enthusiast passing by, my code is pretty bad though.",
+                infoTitle: "Personal Information",
+                locationLabel: "Location",
+                locationValue: "China",
+                specialtyLabel: "Likes",
+                specialtyValue: "Cross-platform Frameworks",
+                educationLabel: "Education",
+                educationValue: "High School Student",
+                contactLabel: "Contact",
+                journeyTitle: "My Journey",
+                journey1Title: "Hanabi Download Manager X",
+                journey1Desc: "Developed an open-source download manager using Flutter and Python, though not many people will use my work (",
+                journey2Title: "Open Source Contributions",
+                journey2Desc: "Started actively contributing to various open source projects and sharing knowledge with the developer community.",
+                journey3Title: "Learning Flutter",
+                journey3Desc: "Began exploring Flutter framework and fell in love with its elegant approach to building cross-platform applications.",
+                interestsTitle: "Interests & Hobbies",
+                interest1Title: "Coding",
+                interest1Desc: "Building innovative solutions and exploring new technologies",
+                interest2Title: "Learning",
+                interest2Desc: "Constantly learning new programming languages and frameworks",
+                interest3Title: "Community",
+                interest3Desc: "Contributing to open source and helping fellow developers",
+                interest4Title: "Innovation",
+                interest4Desc: "Creating tools that solve real-world problems",
+                connectTitle: "Contact Me",
+                connectDesc: "ZZBuAoYE.Lyrics@gmail.com",
+                githubBtn: "Visit My GitHub",
+                homeBtn: "Back to Home",
+                footerText: "© 2023 ZZBuAoYe. All rights reserved."
+            },
+            zh: {
+                name: "ZZBuAoYe",
+                role: "开发者 & 开源爱好者",
+                intro: "Hey，欢迎到我的主页，在这你可以看到我的一些信息，欢迎使用我的项目，只是一个闲得无聊的开源爱好者经此而已，代码写的很烂",
+                infoTitle: "个人信息",
+                locationLabel: "位置",
+                locationValue: "中国",
+                specialtyLabel: "喜欢",
+                specialtyValue: "跨平台框架",
+                educationLabel: "教育",
+                educationValue: "高中生",
+                contactLabel: "联系方式",
+                journeyTitle: "我的历程",
+                journey1Title: "Hanabi Download Manager X",
+                journey1Desc: "使用 Flutter 和 Python 开发了一个开源的下载管理器，没多少人会用我的作品（",
+                journey2Title: "开源贡献",
+                journey2Desc: "开始积极为各种开源项目做贡献，并与开发者社区分享知识。",
+                journey3Title: "学习 Flutter",
+                journey3Desc: "开始探索 Flutter 框架，并爱上了它构建跨平台应用的优雅方式。",
+                interestsTitle: "兴趣爱好",
+                interest1Title: "编程",
+                interest1Desc: "构建创新解决方案并探索新技术",
+                interest2Title: "学习",
+                interest2Desc: "不断学习新的编程语言和框架",
+                interest3Title: "社区",
+                interest3Desc: "为开源做贡献并帮助其他开发者",
+                interest4Title: "创新",
+                interest4Desc: "创造解决实际问题的工具",
+                connectTitle: "联系我",
+                connectDesc: "ZZBuAoYE.Lyrics@gmail.com",
+                githubBtn: "访问我的 GitHub",
+                homeBtn: "返回首页",
+                footerText: "© 2023 ZZBuAoYe 保留所有权利。"
+            }
+        };
+
+        // Cookie functions
+        function setCookie(name, value, days) {
+            const expires = new Date();
+            expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+            document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+        }
+
+        function getCookie(name) {
+            const nameEQ = name + "=";
+            const ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) === ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) === 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Language switching functionality
+        const langSelect = document.getElementById('lang-select');
+        
+        function switchLanguage(lang) {
+            const data = languageData[lang];
+            
+            document.getElementById('name').textContent = data.name;
+            document.getElementById('role').textContent = data.role;
+            document.getElementById('intro').textContent = data.intro;
+            document.getElementById('info-title').textContent = data.infoTitle;
+            document.getElementById('location-label').textContent = data.locationLabel;
+            document.getElementById('location-value').textContent = data.locationValue;
+            document.getElementById('specialty-label').textContent = data.specialtyLabel;
+            document.getElementById('specialty-value').textContent = data.specialtyValue;
+            document.getElementById('education-label').textContent = data.educationLabel;
+            document.getElementById('education-value').textContent = data.educationValue;
+            document.getElementById('contact-label').textContent = data.contactLabel;
+            document.getElementById('journey-title').textContent = data.journeyTitle;
+            document.getElementById('journey1-title').textContent = data.journey1Title;
+            document.getElementById('journey1-desc').textContent = data.journey1Desc;
+            document.getElementById('journey2-title').textContent = data.journey2Title;
+            document.getElementById('journey2-desc').textContent = data.journey2Desc;
+            document.getElementById('journey3-title').textContent = data.journey3Title;
+            document.getElementById('journey3-desc').textContent = data.journey3Desc;
+            document.getElementById('interests-title').textContent = data.interestsTitle;
+            document.getElementById('interest1-title').textContent = data.interest1Title;
+            document.getElementById('interest1-desc').textContent = data.interest1Desc;
+            document.getElementById('interest2-title').textContent = data.interest2Title;
+            document.getElementById('interest2-desc').textContent = data.interest2Desc;
+            document.getElementById('interest3-title').textContent = data.interest3Title;
+            document.getElementById('interest3-desc').textContent = data.interest3Desc;
+            document.getElementById('interest4-title').textContent = data.interest4Title;
+            document.getElementById('interest4-desc').textContent = data.interest4Desc;
+            document.getElementById('connect-title').textContent = data.connectTitle;
+            document.getElementById('connect-desc').textContent = data.connectDesc;
+            document.getElementById('github-btn').innerHTML = '<i class="fab fa-github"></i> ' + data.githubBtn;
+            document.getElementById('home-btn').innerHTML = '<i class="fas fa-home"></i> ' + data.homeBtn;
+            document.getElementById('footer-text').textContent = data.footerText;
+            
+            setCookie('preferredLanguage', lang, 365);
+        }
+
+        langSelect.addEventListener('change', (e) => {
+            switchLanguage(e.target.value);
+        });
+
+        const savedLang = getCookie('preferredLanguage') || 'en';
+        langSelect.value = savedLang;
+        switchLanguage(savedLang);
+    </script>
+</body>
+</html>
